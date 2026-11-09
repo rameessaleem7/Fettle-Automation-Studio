@@ -1,0 +1,82 @@
+{
+  "nodes": [
+    {
+      "id": "question",
+      "type": "blueprint",
+      "position": {
+        "x": 20,
+        "y": 60
+      },
+      "data": {
+        "label": "Plain-English question",
+        "detail": "Ask about customers, open invoices, or monthly trends.",
+        "kind": "trigger"
+      }
+    },
+    {
+      "id": "sheet",
+      "type": "blueprint",
+      "position": {
+        "x": 250,
+        "y": 160
+      },
+      "data": {
+        "label": "Connect to sheet",
+        "detail": "Read the data from a spreadsheet.",
+        "kind": "integration",
+        "tool": "Google Sheets",
+        "logo": "https://cdn.simpleicons.org/googlesheets/34A853"
+      }
+    },
+    {
+      "id": "query",
+      "type": "blueprint",
+      "position": {
+        "x": 480,
+        "y": 60
+      },
+      "data": {
+        "label": "Translate to query",
+        "detail": "The agent builds a calculation and checks the result.",
+        "kind": "agent",
+        "tool": "n8n",
+        "logo": "https://cdn.simpleicons.org/n8n/EA4B71"
+      }
+    },
+    {
+      "id": "answer",
+      "type": "blueprint",
+      "position": {
+        "x": 710,
+        "y": 160
+      },
+      "data": {
+        "label": "Answer and chart",
+        "detail": "Return the result with a visual for your team.",
+        "kind": "delivery",
+        "tool": "Slack",
+        "logo": "https://cdn.21st.dev/assets/mirror/17/17160477a475166ad0556e0028e3b0bd0634d70c02e7b920c04a4429ea184ab3.svg"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "question-sheet",
+      "source": "question",
+      "target": "sheet",
+      "type": "blueprint"
+    },
+    {
+      "id": "sheet-query",
+      "source": "sheet",
+      "target": "query",
+      "type": "blueprint"
+    },
+    {
+      "id": "query-answer",
+      "source": "query",
+      "target": "answer",
+      "type": "blueprint"
+    }
+  ]
+}
